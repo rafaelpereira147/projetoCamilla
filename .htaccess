@@ -1,0 +1,13 @@
+#Ativa o modo de escrita
+RewriteEngine On
+
+#Define a pasta raiz do site, se atentar para quando se trabalha localmente e no ambiente de producao
+RewriteBase /testes/rafael/lacos
+
+#Redireciona as requisições para o index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ config.php?url=$1 [QSA,L]
+
+# Redireciona a raiz do site para a página 'home'
+RewriteRule ^$ config.php?url=home [L]
